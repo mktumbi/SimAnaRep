@@ -1,0 +1,170 @@
+"import MDAnalysis\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom MDAnalysis.analysis.align import *\nfrom MDAnalysis.analysis.rms import rmsd\nfrom matplotlib.backends.backend_pdf import PdfPages\nimport argparse\nfrom  SimAnaRepproRMSD import *\nfrom SimAnaRepRoG import *\nfrom SimRepAnaligRMSD import *\n\n\nparser = argparse.ArgumentParser(description='SimRepAna is a programme to generate report for your Ligand-Protein MD Simulations.')\nparser.add_argument('-j', '--jobname', help='Enter your job name and it will appear as first coloumn in the result file', default='Test')\nparser.add_argument('-trj', '--trajectory', help='Filename of Trajecotry file.', required=True)\nparser.add_argument('-top', '--topology', help='Filename of psf/topology file', required=True)\nargs = parser.parse_args()\n\nu = MDAnalysis.Universe(args.topology, args.trajectory)\nref = MDAnalysis.Universe(args.topology, args.trajectory)\n\n\n\nligandRMSD = []\nligfig,ligandRMSD = ligRMSD(u,ref)\nnp.savetxt(args.jobname+\"_ligRMSD.data\", ligandRMSD)\nligfig.figure.savefig(args.jobname+\"_ligRMSD.pdf\")\ncaRMSD =[]\nallRMSD = []\nprofig,caRMSD,allRMSD = proRMSD(u,ref)\nnp.savetxt(args.jobname+\"-caRMSD-pro.data\", caRMSD)\nnp.savetxt(args.jobname+\"-allRMSD-pro.data\", allRMSD)\nprofig.figure.savefig(args.jobname+\"-proRMSD.pdf\")\n\nRogfig, Rgyrdata = Rgyr(u)\nnp.savetxt(args.jobname+\"-RoG.data\", Rgyrdata)\nRogfig.figure.savefig(args.jobname+\"-RoG.pdf\")\n\n\n    \n\n"
+{"patch":[[[[0,"pdf\")\n\n\n"],[1,"\n"],[0,"    \n\n"]],1408,1408,14,15]],"time":1444913421353}
+{"patch":[[[[0,"G.pdf\")\n"],[1,"Rogfig.savefig()\nRogfig.close()"],[0,"\n\n\n    \n"]],1406,1406,16,47]],"time":1444913419177}
+{"patch":[[[[0,"yrdata)\n"],[1,"    #print Rgyrdata\n"],[0,"Rogfig.f"]],1359,1359,16,36]],"time":1444913398332}
+{"patch":[[[[0,".pdf\")\n\n"],[1,"    #################\n"],[0,"Rogfig, "]],1285,1285,16,38]],"time":1444913396144}
+{"patch":[[[[0," proRMSD(u,ref)\n"],[1,"    #print caRMSD\n"],[0,"np.savetxt(args."]],1119,1119,32,50]],"time":1444913393989}
+{"patch":[[[[0,"D.pdf\")\n"],[1,"    ################\n"],[0,"caRMSD ="]],1064,1064,16,37]],"time":1444913391950}
+{"patch":[[[[0,"vefig()\n"],[1,"   "],[0,"Rogfig.c"]],1504,1504,16,19]],"time":1444913361333}
+{"patch":[[[[0,"gyrdata\n"],[1," "],[0,"Rogfig.f"]],1440,1440,16,17],[[[0,"G.pdf\")\n"],[1,"    "],[0,"Rogfig.s"]],1488,1488,16,20],[[[0,"vefig()\n"],[1," "],[0,"   Rogfi"]],1509,1509,16,17]],"time":1444913358402}
+{"patch":[[[[0,"Rgyr(u)\n"],[1,"  "],[0,"np.savet"]],1373,1373,16,18],[[[0,"gyrdata\n"],[1,"   "],[0," Rogfig."]],1442,1442,16,19]],"time":1444913356082}
+{"patch":[[[[0,"#######\n"],[1,"  "],[0,"Rogfig, "]],1346,1346,16,18],[[[0,"Rgyr(u)\n"],[1,"  "],[0,"  np.sav"]],1375,1375,16,18]],"time":1444913354476}
+{"patch":[[[[0,"#######\n"],[1,"  "],[0,"  Rogfig"]],1346,1346,16,18]],"time":1444913352261}
+{"patch":[[[[0,"#######\n"],[1,"    "],[0,"caRMSD ="]],1085,1085,16,20]],"time":1444913350056}
+{"patch":[[[[0,"MSD =[]\n"],[1,"    "],[0,"allRMSD "]],1100,1100,16,20],[[[0,"SD = []\n"],[1,"  "],[0,"profig,c"]],1117,1117,16,18]],"time":1444913348123}
+{"patch":[[[[0,"SD = []\n"],[1,"  "],[0,"  profig"]],1117,1117,16,18],[[[0," caRMSD\n"],[1,"    "],[0,"np.savet"]],1178,1178,16,20]],"time":1444913346078}
+{"patch":[[[[0,"caRMSD)\n"],[1,"    "],[0,"np.savet"]],1234,1234,16,20],[[[0,"llRMSD)\n"],[1," "],[0,"profig.f"]],1292,1292,16,17]],"time":1444913344024}
+{"patch":[[[[0,"llRMSD)\n"],[1,"   "],[0," profig."]],1292,1292,16,19]],"time":1444913342068}
+{"patch":[[[[0,"D.pdf\")\n"],[1,"    profig.savefig()\n    plt.close()"],[0,"\n    ###"]],1347,1347,16,52]],"time":1444913340025}
+{"patch":[[[[0,"gRMSD.pdf\")\n"],[1,"\n"],[0,"    ########"]],1060,1060,24,25]],"time":1444913334592}
+{"patch":[[[[0,"D.pdf\")\n"],[1,"ligfig.figure.savefig()\nplt.close()"],[0,"\n    ###"]],1064,1064,16,51]],"time":1444913332648}
+{"patch":[[[[0,"D.pdf\")\n"],[1," "],[0,"ligfig.f"]],1064,1064,16,17],[[[0,"vefig()\n"],[1,"    "],[0,"plt.clos"]],1089,1089,16,20]],"time":1444913324454}
+{"patch":[[[[0,"ndRMSD)\n"],[1,"   "],[0,"ligfig.f"]],1013,1013,16,19],[[[0,"D.pdf\")\n"],[1,"   "],[0," ligfig."]],1067,1067,16,19]],"time":1444913322409}
+{"patch":[[[[0,"MSD)\n   "],[1," "],[0,"ligfig.f"]],1016,1016,16,17]],"time":1444913320465}
+{"patch":[[[[0,"(u,ref)\n"],[1,"  "],[0,"np.savet"]],960,960,16,18]],"time":1444913318411}
+{"patch":[[[[0,"SD = []\n"],[1,"  "],[0,"ligfig,l"]],925,925,16,18],[[[0,"(u,ref)\n"],[1,"  "],[0,"  np.sav"]],962,962,16,18]],"time":1444913316373}
+{"patch":[[[[0,"ory)\n\n\n\n"],[1,"   "],[0,"ligandRM"]],909,909,16,19],[[[0,"SD = []\n"],[1,"  "],[0,"  ligfig"]],928,928,16,18]],"time":1444913314393}
+{"patch":[[[[0,")\n\n\n\n   "],[1," "],[0,"ligandRM"]],912,912,16,17]],"time":1444913312374}
+{"patch":[[[[0,"ctory)\n\n"],[1,"with PdfPages('multipage_pdf.pdf') as pdf:\n"],[0,"\n\n    li"]],907,907,16,59]],"time":1444913309758}
+{"patch":[[[[0,"vefig()\n    "],[1,"#"],[0,"Rogfig.close"]],1683,1683,24,25]],"time":1444913282061}
+{"patch":[[[[0,"g.savefig()\n    "],[1,"#"],[0,"plt.close()\n    "]],1467,1467,32,33]],"time":1444913279622}
+{"patch":[[[[0,"g()\n    "],[1,"#"],[0,"plt.clos"]],1155,1155,16,17]],"time":1444913275888}
+{"patch":[[[[0,"   ligfig.figure"],[-1,"."],[0,"savefig()\n    #p"]],1132,1132,33,32]],"time":1444913248376}
+{"patch":[[[[0," ligfig."],[-1,"figure"],[0,"savefig("]],1134,1134,22,16]],"time":1444913246192}
+{"patch":[[[[0,"g()\n    "],[-1,"#"],[0,"Rogfig.c"]],1682,1682,17,16]],"time":1444913213668}
+{"patch":[[[[0,"g.savefig()\n    "],[-1,"#"],[0,"plt.close()\n    "]],1461,1461,33,32]],"time":1444913210397}
+{"patch":[[[[0,"g()\n    "],[-1,"#"],[0,"plt.clos"]],1148,1148,17,16]],"time":1444913205973}
+{"patch":[[[[0,"oG import *\n"],[-1,"from"],[1,"import"],[0," SimRepAnali"]],266,266,28,30]],"time":1444913108391}
+{"patch":[[[[0,"mport *\n"],[-1,"from"],[1,"import"],[0," SimAnaR"]],243,243,20,22]],"time":1444913106145}
+{"patch":[[[[0,"aRepRoG "],[-1,"import "],[0,"*\nimport"]],263,263,23,16],[[[0,"ligRMSD "],[-1,"import "],[0,"*\n\n\npars"]],289,289,23,16]],"time":1444913102247}
+{"patch":[[[[0,"D import"],[-1," "],[0,"*\nimport"]],240,240,17,16]],"time":1444913100194}
+{"patch":[[[[0,"proRMSD "],[-1,"import"],[0,"*\nimport"]],234,234,22,16]],"time":1444913098268}
+{"patch":[[[[0,"se\nfrom "],[1,"import"],[0," SimAnaR"]],216,216,16,22]],"time":1444913096407}
+{"patch":[[[[0,"oRMSD *\n"],[1,"fr"],[0,"import S"]],242,242,16,18]],"time":1444913092924}
+{"patch":[[[[0,"RMSD *\nf"],[-1,"r"],[0,"import S"]],243,243,17,16]],"time":1444913090916}
+{"patch":[[[[0,"oRMSD *\n"],[-1,"f"],[0,"import S"]],242,242,17,16]],"time":1444913088950}
+{"patch":[[[[0,"aligRMSD"],[-1," *"],[0,"\n\n\nparse"]],287,287,18,16]],"time":1444913085776}
+{"patch":[[[[0,"naRepRoG"],[-1," *"],[0,"\nimport "]],261,261,18,16]],"time":1444913081763}
+{"patch":[[[[0,"proRMSD "],[-1,"*"],[0,"\nimport "]],240,240,17,16]],"time":1444913079658}
+{"patch":[[[[0,"pproRMSD"],[-1," "],[0,"\nimport "]],239,239,17,16]],"time":1444913077816}
+{"patch":[[[[0,"gparse\nf"],[-1,"rom "],[0,"import S"]],212,212,20,16]],"time":1444913075837}
+{"patch":[[[[0,"rgparse\n"],[-1,"f"],[0,"import S"]],211,211,17,16]],"time":1444913073693}
+{"patch":[[[[0,"imRepAna"],[1,"-"],[0,"ligRMSD\n"]],271,271,16,17]],"time":1444913035483}
+{"patch":[[[[0,"imAnaRep"],[1,"-"],[0,"RoG\nimpo"]],251,251,16,17]],"time":1444913033750}
+{"patch":[[[[0,"imAnaRep"],[1,"-"],[0,"proRMSD\n"]],227,227,16,17]],"time":1444913031447}
+{"patch":[[[[0,"-ligRMSD"],[1,".p\nSimRepAna.py"],[0,"\n\n\nparse"]],281,281,16,31]],"time":1444912924892}
+{"patch":[[[[0,"igRMSD.p"],[1,"y"],[0,"\nSimRepA"]],283,283,16,17]],"time":1444912921875}
+{"patch":[[[[0,"ep-RoG\ni"],[-1,"mport "],[1,"p"],[0,"SimRepAn"]],258,258,22,17]],"time":1444912919873}
+{"patch":[[[[0,"ep-RoG\ni"],[-1,"p"],[0,"SimRepAn"]],258,258,17,16]],"time":1444912917832}
+{"patch":[[[[0,"Rep-RoG\n"],[-1,"i"],[0,"SimRepAn"]],257,257,17,16]],"time":1444912915876}
+{"patch":[[[[0,"gRMSD.py"],[-1,"\n"],[1,"  "],[0,"SimRepAn"]],277,277,17,18]],"time":1444912912673}
+{"patch":[[[[0,"aRep-RoG"],[1,".py "],[0,"\nSimRepA"]],256,256,16,20]],"time":1444912910660}
+{"patch":[[[[0,"-RoG.py "],[-1,"\n"],[1," "],[0,"SimRepAn"]],260,260,17,17]],"time":1444912908813}
+{"patch":[[[[0,"roRMSD\nimpor"],[-1,"t "],[0,"SimAnaRep-Ro"]],237,237,26,24]],"time":1444912906662}
+{"patch":[[[[0,"proRMSD\n"],[-1,"impor"],[0,"SimAnaRe"]],236,236,21,16]],"time":1444912904512}
+{"patch":[[[[0,"-proRMSD"],[1,".p"],[0,"\nSimAnaR"]],235,235,16,18]],"time":1444912902612}
+{"patch":[[[[0,"roRMSD.p"],[1,"y  "],[0,"\nSimAnaR"]],237,237,16,19]],"time":1444912900548}
+{"patch":[[[[0,"gparse\ni"],[-1,"mport "],[0,"SimAnaRe"]],212,212,22,16]],"time":1444912898568}
+{"patch":[[[[0,"rgparse\n"],[-1,"i"],[0,"SimAnaRe"]],211,211,17,16]],"time":1444912896624}
+{"patch":[[[[0,"MSD.py  "],[-1,"\n"],[0,"SimAnaRe"]],233,233,17,16]],"time":1444912894594}
+{"patch":[[[[0,"rse\n"],[-1,"SimAnaRep-proRMSD.py  SimAnaRep-RoG.py  SimRepAna-ligRMSD.py  SimRepAna.py"],[0,"\n\n\np"]],215,215,82,8]],"time":1444912892529}
+{"patch":[[[[0,"parse\n\n\n"],[-1,"\n"],[0,"parser ="]],213,213,17,16]],"time":1444912890280}
+{"patch":[[[[0,"parse\n\n\n"],[1,"if __name__ == '__main__':\n"],[0,"parser ="]],213,213,16,43]],"time":1444912806616}
+{"patch":[[[[0,"g()\n    "],[-1,"Rogfig"],[1,"plt"],[0,".close()"]],1617,1617,22,19]],"time":1444912759020}
+{"patch":[[[[0,"G.pdf\")\n    "],[-1,"Rog"],[1,"pro"],[0,"fig.savefig("]],1592,1592,27,27]],"time":1444912757167}
+{"patch":[[[[0,"\"-RoG.pdf\")\n"],[1,"    "],[0,"    profig.s"]],1588,1588,24,28]],"time":1444912753776}
+{"patch":[[[[0,"    "],[-1,"    profig.savefig()\n    plt.close()"],[0,"\n\n\n "]],1600,1600,44,8]],"time":1444912751607}
+{"patch":[[[[0,"G.pdf\")\n"],[-1,"    \n"],[0,"\n\n    \n\n"]],1592,1592,21,16]],"time":1444912749276}
+{"patch":[[[[0,"f\")\n    "],[1,"li"],[0,"profig"],[1,"gfig"],[0,".savefig"]],1384,1384,22,28]],"time":1444912742313}
+{"patch":[[[[0,")\n    li"],[-1,"profig"],[0,"gfig.sav"]],1386,1386,22,16]],"time":1444912738951}
+{"patch":[[[[0,"\"-proRMSD.pdf\")\n"],[1,"    "],[0,"    ligfig.savef"]],1372,1372,32,36]],"time":1444912736893}
+{"patch":[[[[0,"    "],[-1,"    ligfig.savefig()\n    plt.close()"],[0,"\n   "]],1388,1388,44,8]],"time":1444912733828}
+{"patch":[[[[0,"D.pdf\")\n"],[-1,"    \n"],[0,"    ####"]],1380,1380,21,16]],"time":1444912730656}
+{"patch":[[[[0,"    "],[-1,"plt.close()"],[0,"\n   "]],1089,1089,19,8]],"time":1444912727456}
+{"patch":[[[[0,"vefig()\n"],[-1,"    \n"],[0,"    ####"]],1081,1081,21,16]],"time":1444912724733}
+{"patch":[[[[0,"save"],[-1,"fig()"],[0,"\n   "]],1079,1079,13,8]],"time":1444912694817}
+{"patch":[[[[0,"ligfig.s"],[-1,"ave"],[0,"\n    ###"]],1072,1072,19,16]],"time":1444912692768}
+{"patch":[[[[0,"   l"],[-1,"igfig.s"],[0,"\n   "]],1069,1069,15,8]],"time":1444912690512}
+{"patch":[[[[0,"D.pdf\")\n"],[-1,"    l"],[0,"\n    ###"]],1060,1060,21,16]],"time":1444912688340}
+{"patch":[[[[0," pdf:\n\n\n"],[-1,"    "],[0,"ligandRM"]],889,889,20,16],[[[0,"SD = []\n"],[-1,"    "],[0,"ligfig,l"]],905,905,20,16],[[[0,"(u,ref)\n"],[-1,"    "],[0,"np.savet"]],940,940,20,16],[[[0,"ndRMSD)\n"],[-1,"    "],[0,"ligfig.f"]],993,993,20,16],[[[0,".pdf\")\n\n"],[-1,"    "],[0,"########"]],1045,1045,20,16],[[[0,"#######\n"],[-1,"    "],[0,"caRMSD ="]],1062,1062,20,16],[[[0,"MSD =[]\n"],[-1,"    "],[0,"allRMSD "]],1073,1073,20,16],[[[0,"SD = []\n"],[-1,"    "],[0,"profig,c"]],1086,1086,20,16],[[[0,"(u,ref)\n"],[-1,"    "],[0,"#print c"]],1125,1125,20,16],[[[0," caRMSD\n"],[-1,"    "],[0,"np.savet"]],1139,1139,20,16],[[[0,"caRMSD)\n"],[-1,"    "],[0,"np.savet"]],1191,1191,20,16],[[[0,"llRMSD)\n"],[-1,"    "],[0,"profig.f"]],1245,1245,20,16],[[[0,"D.pdf\")\n"],[-1,"    "],[0,"########"]],1296,1296,20,16],[[[0,"#######\n"],[-1,"    "],[0,"Rogfig, "]],1314,1314,20,16],[[[0,"Rgyr(u)\n"],[-1,"    "],[0,"np.savet"]],1341,1341,20,16],[[[0,"yrdata)\n"],[-1,"    "],[0,"#print R"]],1388,1388,20,16],[[[0,"gyrdata\n"],[-1,"    "],[0,"Rogfig.f"]],1404,1404,20,16]],"time":1444912683659}
+{"patch":[[[[0,"y)\n\n"],[-1,"with PdfPages('multipage_pdf.pdf') as pdf:\n\n\n"],[0,"liga"]],848,848,53,8]],"time":1444912681492}
+{"patch":[[[[0,"pdf\")\n\n\n"],[1,"with PdfPages('multipage_pdf.pdf') as pdf:\n"],[0,"    \n\n"]],1408,1408,14,57]],"time":1444912676472}
+{"patch":[[[[0,"pdf:"],[-1,"\n    "],[0,"\n\n"]],1454,1454,11,6]],"time":1444912607449}
+{"patch":[[[[0,"gyrdata\n"],[-1,"Rog"],[0,"fig.figu"]],1359,1359,19,16]],"time":1444912601888}
+{"patch":[[[[0,"ndRMSD)\n"],[-1,"lig"],[0,"fig.figu"]],948,948,19,16]],"time":1444912596304}
+{"patch":[[[[0,"llRMSD)\n"],[-1,"pro"],[0,"fig.figu"]],1197,1197,19,16]],"time":1444912590409}
+{"patch":[[[[0,"###\n"],[-1,"Ro"],[0,"g"],[1,"y"],[0,"fig,"]],1267,1267,11,10]],"time":1444912579509}
+{"patch":[[[[0,"######\ng"],[-1,"y"],[0,"fig, Rgy"]],1264,1264,17,16]],"time":1444912577659}
+{"patch":[[[[0,"######\ng"],[1,"ro"],[0,"fig, Rgy"]],1264,1264,16,18]],"time":1444912575496}
+{"patch":[[[[0,"######\ng"],[-1,"ro"],[0,"fig, Rgy"]],1264,1264,18,16]],"time":1444912573483}
+{"patch":[[[[0,"#######\n"],[-1,"g"],[0,"fig, Rgy"]],1263,1263,17,16]],"time":1444912571488}
+{"patch":[[[[0,"yrdata)\n"],[1," "],[0,"#print R"]],1334,1334,16,17],[[[0,"gyrdata\n"],[1,"    "],[0,"fig.figu"]],1351,1351,16,20]],"time":1444912565274}
+{"patch":[[[[0,"Rgyr(u)\n"],[1,"  "],[0,"np.savet"]],1287,1287,16,18],[[[0,"yrdata)\n"],[1,"   "],[0," #print "]],1336,1336,16,19]],"time":1444912563421}
+{"patch":[[[[0,"#######\n"],[1,"   "],[0,"fig, Rgy"]],1263,1263,16,19],[[[0,"Rgyr(u)\n"],[1,"  "],[0,"  np.sav"]],1290,1290,16,18]],"time":1444912561268}
+{"patch":[[[[0,"####\n   "],[1," "],[0,"fig, Rgy"]],1266,1266,16,17]],"time":1444912559324}
+{"patch":[[[[0,"###\n"],[-1,"    fig, Rgyrdata = Rgyr(u)\n    np.savetxt(args.jobname+\"-RoG.data\", Rgyrdata)\n    #print Rgyrdata\n    fig.figure.savefig(args.jobname+\"-RoG.pdf\")"],[0,"\n\n\nw"]],1267,1267,154,8]],"time":1444912557273}
+{"patch":[[[[0,"D = []\np"],[-1,"ro"],[0,"fig,caRM"]],1039,1039,18,16]],"time":1444912523912}
+{"patch":[[[[0,"SD = []\n"],[-1,"p"],[0,"fig,caRM"]],1038,1038,17,16]],"time":1444912521063}
+{"patch":[[[[0,"########"],[-1,"#####\n"],[0,"\n\n\nwith "]],1254,1254,22,16]],"time":1444912518562}
+{"patch":[[[[0,"D.pdf\")\n"],[-1,"############\n"],[0,"\n\nwith P"]],1242,1242,29,16]],"time":1444912516317}
+{"patch":[[[[0,"df\")"],[-1,"\n\n################"],[0,"\ncaR"]],999,999,26,8]],"time":1444912512225}
+{"patch":[[[[0,"ligandRMSD)\n"],[1," "],[0,"fig.figure.s"]],944,944,24,25]],"time":1444912510192}
+{"patch":[[[[0,"(u,ref)\n"],[1," "],[0,"np.savet"]],895,895,16,17],[[[0,"ndRMSD)\n"],[1,"   "],[0," fig.fig"]],949,949,16,19]],"time":1444912508228}
+{"patch":[[[[0,"(u,ref)\n"],[1,"   "],[0," np.save"]],895,895,16,19]],"time":1444912506181}
+{"patch":[[[[0,"ef)\n"],[-1,"    np.savetxt(args.jobname+\"_ligRMSD.data\", ligandRMSD)\n    fig.figure.savefig(args.jobname+\"_ligRMSD.pdf\")"],[0,"\ncaR"]],899,899,116,8]],"time":1444912504124}
+{"patch":[[[[0,"caRMSD)\n"],[1,"  "],[0,"np.savet"]],1022,1022,16,18],[[[0,"llRMSD)\n"],[1," "],[0,"fig.figu"]],1078,1078,16,17]],"time":1444912481621}
+{"patch":[[[[0," caRMSD\n"],[1," "],[0,"np.savet"]],970,970,16,17],[[[0,"caRMSD)\n"],[1," "],[0,"  np.sav"]],1023,1023,16,17]],"time":1444912479661}
+{"patch":[[[[0,"SD = []\n"],[1," "],[0,"fig,caRM"]],920,920,16,17],[[[0,"(u,ref)\n"],[1," "],[0,"#print c"]],957,957,16,17]],"time":1444912477574}
+{"patch":[[[[0,"MSD =[]\n"],[1," "],[0,"allRMSD "]],907,907,16,17]],"time":1444912475776}
+{"patch":[[[[0,"u,ref)\n\n"],[1," "],[0,"caRMSD ="]],896,896,16,17]],"time":1444912473604}
+{"patch":[[[[0,"MSD)\n   "],[1," "],[0,"np.savet"]],1030,1030,16,17]],"time":1444912470237}
+{"patch":[[[[0,"caRMSD)\n"],[-1,"   "],[0," np.save"]],1027,1027,19,16]],"time":1444912468246}
+{"patch":[[[[0,"aRMSD)\n "],[-1,"np."],[0,"savetxt("]],1028,1028,19,16]],"time":1444912466239}
+{"patch":[[[[0,"aRMSD)\n "],[1,"n."],[0,"savetxt("]],1028,1028,16,18]],"time":1444912463070}
+{"patch":[[[[0,"RMSD)\n n"],[1,"p"],[0,".savetxt"]],1029,1029,16,17]],"time":1444912460001}
+{"patch":[[[[0,"llRMSD)\n"],[1,"   "],[0," fig.fig"]],1082,1082,16,19]],"time":1444912453858}
+{"patch":[[[[0,"(u,ref)\n"],[1,"  "],[0," #print "]],959,959,16,18],[[[0,"caRMSD)\n"],[1,"   "],[0," np.save"]],1029,1029,16,19]],"time":1444912450479}
+{"patch":[[[[0,"ref)\n   "],[1," "],[0,"#print c"]],962,962,16,17],[[[0," caRMSD\n"],[1,"   "],[0," np.save"]],977,977,16,19]],"time":1444912447818}
+{"patch":[[[[0,"MSD =[]\n"],[1,"  "],[0," allRMSD"]],908,908,16,18],[[[0,"SD = []\n"],[1,"   "],[0," fig,caR"]],924,924,16,19]],"time":1444912443822}
+{"patch":[[[[0," =[]\n   "],[1," "],[0,"allRMSD "]],911,911,16,17]],"time":1444912441469}
+{"patch":[[[[0,"f)\n\n"],[-1," caRMSD =[]\n    allRMSD = []\n    fig,caRMSD,allRMSD = proRMSD(u,ref)\n    #print caRMSD\n    np.savetxt(args.jobname+\"-caRMSD-pro.data\", caRMSD)\n    np.savetxt(args.jobname+\"-allRMSD-pro.data\", allRMSD)\n    fig.figure.savefig(args.jobname+\"-proRMSD.pdf\")"],[0,"\n\n\nw"]],900,900,260,8]],"time":1444912438705}
+{"patch":[[[[0,"ref)\n\n\n\n"],[-1,"\n"],[0,"with Pdf"]],898,898,17,16]],"time":1444912422965}
+{"patch":[[[[0,"ectory)\n"],[-1,"\n"],[0,"ligandRM"]],843,843,17,16],[[[0,"SD = []\n"],[-1,"lig"],[0,"fig,liga"]],859,859,19,16],[[[0,",ref)\n\n\n"],[-1,"\n"],[0,"with Pdf"]],893,893,17,16]],"time":1444912415753}
+{"patch":[[[[0,"ry)\n"],[-1,"ligandRMSD = []\nfig,ligandRMSD = ligRMSD(u,ref)\n\n"],[0,"\nwit"]],847,847,57,8]],"time":1444912402355}
+{"patch":[[[[0,"s pdf:\n\n"],[1,"ligandRMSD = []\nfig,ligandRMSD = ligRMSD(u,ref)"]],888,888,8,55]],"time":1444912400187}
+{"patch":[[[[0,"y)\n\n"],[-1,"with PdfPages('multipage_pdf.pdf') as pdf:\n"],[0,"\nlig"]],848,848,51,8]],"time":1444912395180}
+{"patch":[[[[0,"gparse\n\n"],[-1,"\n"],[0,"if __nam"]],212,212,17,16]],"time":1444912360553}
+{"patch":[[[[0,"ages"],[-1,"\nimport argparse"],[0,"\n\nif"]],198,198,24,8]],"time":1444912357700}
+{"patch":[[[[0,"ain__':\n"],[1,"import argparse\n"],[0,"parser ="]],223,223,16,32]],"time":1444912355641}
+{"patch":[[[[0,"rmsd"],[-1,"\nfrom matplotlib.backends.backend_pdf import PdfPages"],[0,"\n\nif"]],145,145,61,8]],"time":1444912352828}
+{"patch":[[[[0,"ectory)\n"],[-1,"\n\n"],[0,"ligandRM"]],789,789,18,16]],"time":1444912292568}
+{"patch":[[[[0,"SD = []\n"],[1,"    "],[0,"fig,liga"]],805,805,16,20]],"time":1444912288881}
+{"patch":[[[[0,"ectory)\n"],[1,"  "],[0,"ligandRM"]],789,789,16,18]],"time":1444912284700}
+{"patch":[[[[0,"ectory)\n"],[1,"    "],[0,"ref = MD"]],731,731,16,20],[[[0,"ectory)\n"],[1,"  "],[0,"  ligand"]],793,793,16,18]],"time":1444912283048}
+{"patch":[[[[0,"args()\n\n"],[1,"   "],[0,"u = MDAn"]],675,675,16,19]],"time":1444912281800}
+{"patch":[[[[0,"s()\n\n   "],[1," "],[0,"u = MDAn"]],678,678,16,17]],"time":1444912278636}
+{"patch":[[[[0,"()\n\n"],[-1,"    u = MDAnalysis.Universe(args.topology, args.trajectory)\n    ref = MDAnalysis.Universe(args.topology, args.trajectory)\n    ligandRMSD = []\n    fig,ligandRMSD = ligRMSD(u,ref)"]],679,679,181,4]],"time":1444912275677}
+{"patch":[[[[0,"_args()\n"],[-1,"\n"]],674,674,9,8]],"time":1444912260424}
+{"patch":[[[[0,"e_args()"],[-1,"\n"]],673,673,9,8]],"time":1444912257236}
+{"patch":[[[[0,"Simu"],[-1,"lations"],[0,".')\n"]],311,311,15,8]],"time":1444912250377}
+{"patch":[[[[0,"ein "],[-1,"MD Simu"],[0,".')\n"]],304,304,15,8]],"time":1444912249455}
+{"patch":[[[[0,"d-Protei"],[-1,"n "],[0,".')\npars"]],298,298,18,16]],"time":1444912246380}
+{"patch":[[[[0,"gand"],[-1,"-Protei"],[1," "],[0,".')\n"]],295,295,15,9]],"time":1444912244545}
+{"patch":[[[[0,"our "],[-1,"Ligand "],[0,".')\n"]],289,289,15,8]],"time":1444912242544}
+{"patch":[[[[0,"epor"],[-1,"t for your "],[0,".')\n"]],278,278,19,8]],"time":1444912240353}
+{"patch":[[[[0,"ener"],[-1,"ate repor"],[0,".')\n"]],269,269,17,8]],"time":1444912238508}
+{"patch":[[[[0,"e to"],[-1," gener"],[0,".')\n"]],263,263,14,8]],"time":1444912236700}
+{"patch":[[[[0,"s a "],[-1,"programme to"],[0,".')\n"]],251,251,20,8]],"time":1444912235529}
+{"patch":[[[[0,"mRep"],[-1,"Ana is a "],[0,".')\n"]],242,242,17,8]],"time":1444912232559}
+{"patch":[[[[0,"n='S"],[-1,"imRep"],[0,".')\n"]],237,237,13,8]],"time":1444912228962}
+{"patch":[[[[0,"on='"],[-1,"S"],[1,"This function will plot RMSD for a given universe (trajectory)"],[0,".')\n"]],236,236,9,70]],"time":1444912226937}
+{"patch":[[[[0,"d=True)\n"],[1,"  "],[0,"parser.a"]],532,532,16,18],[[[0,"d=True)\n"],[1,"    "],[0,"args = p"]],629,629,16,20]],"time":1444912221085}
+{"patch":[[[[0,"'Test')\n"],[1,"    "],[0,"parser.a"]],436,436,16,20],[[[0,"d=True)\n"],[1,"  "],[0,"  parser"]],536,536,16,18]],"time":1444912219144}
+{"patch":[[[[0,"ory).')\n"],[1,"    "],[0,"parser.a"]],298,298,16,20]],"time":1444912217097}
+{"patch":[[[[0,"rgparse\n"],[1,"    "],[0,"parser ="]],186,186,16,20]],"time":1444912215145}
+{"patch":[[[[0,"ain__':\n"],[1,"  "],[0,"import a"]],170,170,16,18]],"time":1444912213098}
+{"patch":[[[[0,"ain__':\n"],[1,"  "],[0,"  import"]],170,170,16,18]],"time":1444912211085}
+{"patch":[[[[0,"sd\n\n"],[-1,"if __name__ == '__main__':\n    import argparse\n    parser = argparse.ArgumentParser(description='This function will plot RMSD for a given universe (trajectory).')\n    parser.add_argument('-j', '--jobname', help='Enter your job name and it will appear as first coloumn in the result file', default='Test')\n    parser.add_argument('-trj', '--trajectory', help='Filename of Trajecotry file.', required=True)\n    parser.add_argument('-top', '--topology', help='Filename of psf/topology file', required=True)\n    args = parser.parse_args()"]],147,147,538,4]],"time":1444912209114}
+{"patch":[[[[0,"rt rmsd\n"],[-1,"\n"]],142,142,9,8]],"time":1444912198665}
+{"patch":[[[[0,"ort rmsd"],[-1,"\n"]],141,141,9,8]],"time":1444912195488}
+{"patch":[[[[-1,"import MDAnalysis\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom MDAnalysis.analysis.align import *\nfrom MDAnalysis.analysis.rms import rmsd"]],0,0,149,0]],"time":1444912193493}

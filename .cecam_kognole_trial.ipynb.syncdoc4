@@ -1,0 +1,7 @@
+{"notebook_name":"cecam_kognole_trial.ipynb"}
+"import MDAnalysis as mda\nimport matplotlib.pyplot as plt"︡{"metadata":{"collapsed":false,"trusted":true},"cell_type":"code","execution_count":6,"outputs":[]}
+"from MDAnalysis import *\nfrom MDAnalysis.analysis.align import *\nfrom MDAnalysis.analysis.rms import rmsd\nfrom MDAnalysis.analysis import *"︡{"metadata":{"collapsed":true,"trusted":true},"cell_type":"code","execution_count":12,"outputs":[]}
+"pdb = \"./41wl_ff.pdb\"\npsf = \"./41wl_ff.psf\"\ndcd = \"./50_frame.dcd\""︡{"metadata":{"collapsed":true,"trusted":true},"cell_type":"code","execution_count":4,"outputs":[]}
+"import MDAnalysis\n"︡{"metadata":{"collapsed":false,"trusted":true},"cell_type":"code","execution_count":9,"outputs":[]}
+"MDAnalysis.analysis.rms.RMSF?"︡{"metadata":{"collapsed":false,"trusted":true},"cell_type":"code","execution_count":14,"outputs":[]}
+""︡{"metadata":{"trusted":true,"collapsed":true},"cell_type":"code","execution_count":null,"outputs":[]}

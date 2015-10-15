@@ -1,6 +1,6 @@
 {"notebook_name":"cecam_kognole.ipynb"}
-"import MDAnalysis as mda\nimport matplotlib.pyplot as plt"︡{"metadata":{"collapsed":false,"trusted":true},"cell_type":"code","execution_count":1,"outputs":[]}
-"from MDAnalysis import *\nfrom MDAnalysis.analysis.align import *\nfrom MDAnalysis.analysis.rms import rmsd"︡{"metadata":{"collapsed":true,"trusted":true},"cell_type":"code","execution_count":2,"outputs":[]}
+"import MDAnalysis as mda\nimport matplotlib.pyplot as plt"︡{"metadata":{"collapsed":false,"trusted":true},"cell_type":"code","execution_count":2,"outputs":[]}
+"from MDAnalysis import *\nfrom MDAnalysis.analysis.align import *\nfrom MDAnalysis.analysis.rms import rmsd"︡{"metadata":{"collapsed":true,"trusted":true},"cell_type":"code","execution_count":3,"outputs":[]}
 "pdb = \"./41wl_ff.pdb\"\npsf = \"./41wl_ff.psf\"\ndcd = \"./50_frame.dcd\""︡{"metadata":{"collapsed":true,"trusted":true},"cell_type":"code","execution_count":4,"outputs":[]}
-"rmsd?"︡{"metadata":{"collapsed":true,"trusted":true},"cell_type":"code","execution_count":5,"outputs":[]}
+"rmsd?"︡{"metadata":{"collapsed":false,"trusted":true},"cell_type":"code","execution_count":4,"outputs":[]}
 ""︡{"metadata":{"collapsed":true,"trusted":true},"cell_type":"code","execution_count":null,"outputs":[]}
